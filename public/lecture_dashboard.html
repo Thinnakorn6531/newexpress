@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lecture dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(15, 15, 52);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* navbar */
+        nav {
+            background-color: rgb(60, 60, 146);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+        }
+
+        .right-buttons {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .right-buttons p,
+        .right-buttons span {
+            margin-right: 10px;
+        }
+
+        .logout-btn {
+            background-color: #c61111;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c61111;
+        }
+
+        .nav {
+            display: flex;
+            margin-right: 5px;
+        }
+
+        .nav h1 {
+            margin: 0;
+            padding-right: 20px;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            text-decoration: underline;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .nav .Dashboard a {
+            color: white;
+            background-color: #35a1bf;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        /* content */
+        .container {
+            display: flex;
+            margin-top: 100px;
+            margin-bottom: 20px;
+            background-color: #245867;
+            border-radius: 20px;
+        }
+
+        .box {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 250px;
+            border-radius: 20px;
+        }
+
+        .box p {
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+            color: white;
+            font-size: 24px;
+        }
+
+        .large-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background-color: #7c98c7;
+            color: #000;
+            width: 937px;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 400px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+        }
+
+        .large-box div {
+            text-align: center;
+            padding: 10px;
+            font-size: 50px;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav">
+            <h1><a href="lecture_booking_status.html">Home</a></h1>
+            <h1><a href="lecture_bookingrequest.html">bookingrequest</a></h1>
+            <h1  class="Dashboard"><a href="staff_dashboard.html">Dashboard</a></h1>
+            <h1><a href="lecture_history.html">History</a></h1>
+        </div>
+
+        <form id="loginForm" action="/login" method="post">
+            <input type="hidden" name="role" value="lecture">
+            <input type="hidden" name="username" value="lecture_username">
+            <input type="hidden" name="password" value="lecture_password">
+        </form>
+
+        <div class="right-buttons">
+            <p>Name:</p><span>Thinnakorn</span>
+            <a class="logout-btn" href="homepage.html">Logout</a>
+        </div>
+    </nav>
+    <!-- content -->
+    <div class="container">
+        <div class="box">
+            <p>User 7</p>
+        </div>
+        <div class="box">
+            <p>Admin 2</p>
+        </div>
+        <div class="box">
+            <p>Lecture 1</p>
+        </div>
+    </div>
+    <!-- large box -->
+    <div class="large-box">
+        <div style="grid-column: 1 / 2; grid-row: 1 / 2; color: green;">Avalaible 1</div>
+        <div style="grid-column: 2 / 3; grid-row: 1 / 2; color: red;">Reserved 1</div>
+        <div style="grid-column: 1 / 2; grid-row: 2 / 3; color: blue;">Pending 2</div>
+        <div style="grid-column: 2 / 3; grid-row: 2 / 3; color: rgb(105, 97, 97);">Disable 0</div>
+    </div>
+
+    <script>
+        // // Auto-submit the form when the page loads
+        // window.onload = function () {
+        //     document.getElementById('loginForm').submit();
+        // };
+    </script>
+</body>
+
+</html>

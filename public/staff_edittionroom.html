@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditRoom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(15, 15, 52);
+        }
+
+        /* navbar */
+        nav {
+            background-color: rgb(60, 60, 146);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+        }
+
+        .right-buttons {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .right-buttons p,
+        .right-buttons span {
+            margin-right: 10px;
+        }
+
+        .logout-btn {
+            background-color: #c61111;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c61111;
+        }
+
+        .nav {
+            display: flex;
+            margin-right: 5px;
+        }
+
+        .nav h1 {
+            margin: 0;
+            padding-right: 20px;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            text-decoration: underline;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .nav .Home a {
+            color: white;
+            background-color: #35a1bf;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        /* ส่วนของฟอร์ม */
+
+        h2 {
+            color: #120f0f;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        .form-adding {
+            background-color: #f4f6fa;
+            padding: 20px;
+            margin-top: 80px;
+            border-radius: 20px;
+            width: 400px;
+            margin: 80px auto;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        label[for="edit-size"] {
+            border-radius: 20px;
+            background-color: #35a1bf;
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            border-radius: 20px;
+            text-align: center;
+            padding: 10px;
+            width: 90%;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid #35a1bf;
+        }
+
+        input[type="radio"]:checked {
+            border-color: #35a1bf;
+            background-color: #35a1bf;
+        }
+
+
+        input[type="radio"]:hover {
+            border-color: #35a1bf;
+        }
+
+        input[type="radio"]:checked::after {
+            content: " ✓";
+            display: inline-block;
+            font-size: 14px;
+            color: #fff;
+            font-weight: bold;
+            line-height: 16px;
+            text-align: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #1e1594;
+        }
+
+        input[type="radio"]:checked+span {
+            font-weight: bold;
+        }
+
+        /* ส่วนของปุ่ม ADD */
+        button {
+            background-color: #224a99;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 160px;
+        }
+
+        button:hover {
+            background-color: #232bcc;
+            /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+        }
+
+        #Roomname {
+            border-radius: 20px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            background-color: #fff;
+            border: 1px solid #35a1bf;
+        }
+
+        #Roomname:focus {
+            outline: none;
+            border-color: #1e1594;
+        }
+
+        #Roomname option {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #Roomname option:hover {
+            background-color: #d3d3d3;
+        }
+
+        .user-using-room {
+            color: red;
+        }
+        .nav .Edit a {
+            color: white;
+            background-color: #35a1bf;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav>
+        <div class="nav">
+            <h1><a href="staff_dashboard.html">Home</a></h1>
+            <h1 class="Edit"><a href="#">Edit</a></h1>
+            <h1><a href="student_status.html">Reserved status</a></h1>
+            <h1><a href="staff_history.html">History</a></h1>
+        </div>
+        <div class="right-buttons">
+            <p>Name:</p><span>Thinnakorn</span>
+            <a class="logout-btn" href="homepage.html">Logout</a>
+        </div>
+    </nav>
+
+    <!-- form -->
+    <div class="container">
+        <form class="form-adding">
+            <h2>Edition Room</h2>
+            <label for="Roomname">Select Room to Edit</label>
+            <select id="Roomname" name="Roomname">
+                <option value="Room 1">Room 1</option>
+                <option value="Room 2">Room 2</option>
+                <option value="Room 3">Room 3</option>
+                <option value="Room 4">Room 4</option>
+            </select><br><br>
+            <p>10:00 - 12:00 am</p>
+            <p class="user-using-room">user are using room.</p>
+            <p>10:00 - 12:00 am</p>
+            <label for="edit-size">
+                <input type="radio" id="large" name="edit-size" value="20">Pending
+                <span><input type="radio" id="large" name="party-size" value="20">Disable</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Reserved</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Avalaible</span>
+            </label>
+            <p>13:00 - 15:00 pm</p>
+            <label for="edit-size">
+                <input type="radio" id="large" name="edit-size" value="20">Pending
+                <span><input type="radio" id="large" name="party-size" value="20">Disable</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Reserved</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Avalaible</span>
+            </label>
+            <p>15:00 - 17:00 pm</p>
+            <label for="edit-size">
+                <input type="radio" id="large" name="edit-size" value="20">Pending
+                <span><input type="radio" id="large" name="party-size" value="20">Disable</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Reserved</span>
+                <span><input type="radio" id="large" name="party-size" value="20">Avalaible</span>
+            </label>
+            <button type="button">Edit</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('button').addEventListener('click', function () {
+            const roomName = document.getElementById('Roomname').value;
+            const selectedCheckboxes = document.querySelectorAll('input[name="edit-size"]:checked');
+            const selectedOptions = Array.from(selectedCheckboxes).map(checkbox => checkbox.nextSibling.textContent);
+
+            if (!roomName || selectedOptions.length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please select a room and at least one status!',
+                    allowOutsideClick: false
+                });
+                return;
+            }
+
+            // รวมข้อมูลการแก้ไขเข้าด้วยกัน
+            let changes = '';
+            selectedOptions.forEach(option => {
+                changes += `<p>${option}</p>`;
+            });
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Room Updated Successfully!',
+                html: `
+            <p><strong>Room:</strong> ${roomName}</p>
+            <p><strong>Changes:</strong></p>
+            ${changes}
+        `,
+                allowOutsideClick: false
+            });
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

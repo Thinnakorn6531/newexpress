@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserved Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(15, 15, 52);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .status-container {
+            max-width: 860px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #0056b3;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: auto;
+            min-height: 300px;
+        }
+
+        h2 {
+            background-color: rgb(250, 252, 253);
+            text-align: center;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px auto;
+            max-width: 40%;
+            font-size: 1.2em;
+            color: rgb(35, 154, 245);
+            margin-bottom: 30px;
+        }
+
+        .alltable {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+            overflow-y: auto;
+            display: block;
+            max-height: 400px;
+        }
+
+
+        th {
+            background-color: #0056b3;
+            color: rgb(249, 244, 244);
+            text-align: center;
+            border: none;
+            padding: 15px;
+        }
+
+        th:first-child {
+            width: 50px;
+        }
+
+        td:first-child {
+            width: 50px;
+        }
+
+
+        td {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ccc;
+            width: 400px;
+            height: 40px;
+        }
+
+
+        td:hover {
+            background-color: #cedee5;
+        }
+
+
+        td[data-status="Pending"] {
+            background-color: #d2e96d;
+            color: black;
+        }
+
+
+        nav {
+            background-color: rgb(60, 60, 146);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+        }
+
+        .right-buttons {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .right-buttons p,
+        .right-buttons span {
+            margin-right: 10px;
+        }
+
+        .logout-btn {
+            background-color: #c61111;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c61111;
+        }
+
+        .nav {
+            display: flex;
+            margin-right: 5px;
+        }
+
+        .nav h1 {
+            margin: 0;
+            padding-right: 20px;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            text-decoration: underline;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .nav .Reservedstatus a {
+            color: white;
+            background-color: #35a1bf;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav">
+            <h1><a href="student_booking.html">Home</a></h1>
+            <h1 class="Reservedstatus"><a href="#">Reserved status</a></h1>
+        </div>
+        <div class="right-buttons">
+            <p>Name:</p><span>Thinnakorn</span>
+            <a class="logout-btn" href="homepage.html">Logout</a>
+        </div>
+    </nav>
+    <div class="status-container">
+        <h2>Reserved Status</h2>
+        <div class="alltable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Room</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Room 1</td>
+                        <td>08:00-10:00 am</td>
+                        <td data-status="Pending">Pending</td>
+                        <td>Lorem, ipsum dolor.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        // Function to display booking history
+        function displayBookingHistory() {
+            const table = document.querySelector('table tbody');
+            table.innerHTML = '';
+            const history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+
+            history.forEach((entry, index) => {
+                const row = table.insertRow();
+
+                const noCell = row.insertCell(0);
+                noCell.textContent = index + 1;
+
+                const roomCell = row.insertCell(1);
+                roomCell.textContent = entry.room;
+
+                const timeCell = row.insertCell(2);
+                timeCell.textContent = entry.time;
+
+                const statusCell = row.insertCell(3);
+                statusCell.textContent = 'Pending';
+                statusCell.dataset.status = 'Pending';
+
+                const reasonCell = row.insertCell(4);
+                reasonCell.textContent = entry.reason;
+            });
+        }
+
+        // Call displayBookingHistory() when the page loads
+        window.onload = function () {
+            displayBookingHistory();
+        };
+    </script>
+
+</body>
+
+</html>
